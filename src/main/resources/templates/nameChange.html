@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" th:href="@{/sample.css}">
+<link rel="stylesheet" href="NewFile.css">
+
+</head>
+<body>
+<header>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container d-flex justify-content-between">
+				<a href="/" class="navbar-brand d-flex align-items-center"> <strong>掲示板</strong>
+				</a>
+				<div class="navbar-brand d-flex align-items-center">
+					<div>名前：</div>
+					<div th:text="${name}"></div>
+				</div>
+				<form action="/tlansitonNameChange" method="GET">
+					<input type="submit" class="navbar-toggler" 
+						data-toggle="collapse" data-target="#navbarHeader"
+						aria-controls="navbarHeader" aria-expanded="false"
+						aria-label="Toggle navigation" value=名前の変更>
+				</form>
+			</div>
+		</div>
+	</header>
+	<div align=center>
+
+		<div class="card mb-4 shadow-sm position-absolute" align="center">
+			<div class="card-body">
+				<div>
+					新しい名前：
+					<form action="nameChange" method="POST">
+						<input type=text name="newName"> <input type="submit"
+							value=変更する>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

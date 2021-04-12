@@ -1,0 +1,29 @@
+@charset "UTF-8";
+h5{font: 50px;
+	color: #0000FF;
+}
+.overflow{
+	height: 30px;
+	width: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.menu {
+  width: 100%;
+  background: #4499cc;
+  position: fixed;
+  bottom: 0;
+  z-index:999;
+}
+
+
+.position-absolute{
+   background-color: #CCCCCC;
+  position: absolute;
+  top: 50%; /*親要素を起点に上から50%*/
+  left: 50%;  /*親要素を起点に左から50%*/
+  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}

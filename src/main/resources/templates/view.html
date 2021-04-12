@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" th:href="@{/sample.css}">
+<link rel="stylesheet" href="NewFile.css">
+
+</head>
+<body>
+	<a id="skippy" class="sr-only sr-only-focusable" href="#content">
+		<div class="container">
+			<span class="skiplink-text">Skip to main content</span>
+		</div>
+	</a>
+
+	<header>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container d-flex justify-content-between">
+				<a href="#" class="navbar-brand d-flex align-items-center"> <strong>掲示板</strong>
+				</a>
+				<div class="navbar-brand d-flex align-items-center">
+					<div>名前：</div>
+					<div th:text="${name}"></div>
+				</div>
+				<form action="/tlansitonNameChange" method="GET">
+					<input type="submit" class="navbar-toggler" 
+						data-toggle="collapse" data-target="#navbarHeader"
+						aria-controls="navbarHeader" aria-expanded="false"
+						aria-label="Toggle navigation" value=名前の変更>
+				</form>
+			</div>
+		</div>
+	</header>
+
+	<main role="main">
+
+
+
+		<div class="album py-5 bg-light">
+			<h3>スレッド詳細</h3>
+			<div class="container">
+
+
+
+				<th:block th:each="entity : ${ComentData}">
+
+
+					<div class="card mb-4 shadow-sm" align="center">
+						<div class="card-body">
+							<div align="left">
+								投稿者：
+								<p th:text="${entity.name}"></p>
+								コメント
+								<p th:text="${entity.message} " class="card-text sample tovf2"></p>
+							</div>
+						</div>
+
+					</div>
+
+				</th:block>
+
+			</div>
+		</div>
+		<section class="jumbotron text-left">
+			<div class="container">
+				<h3 class="jumbotron-heading">コメント書き込み</h3>
+
+				<form action="/newComent" method="POST">
+					<input type="text" name="message"> <input type="hidden"
+						name="threadNumber" th:value="${ComentData.get(0).getThreadName()}">
+					<!-- <form:textarea path="message" rows="5" cols="30"></form:textarea> -->
+					<input type="submit" value="書き込む">
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<footer class="text-muted">
+		<div class="container">
+			<p class="float-right">
+				<a href="#">ページトップ</a>
+			</p>
+			<p>作成者 川内</p>
+			<p>
+				<a href="../../">ホームへ戻る</a>
+			</p>
+		</div>
+	</footer>
+	<script src="../../assets/js/vendor/holder.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+	</script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="/docs/4.3/assets/js/vendor/anchor.min.js"></script>
+	<script src="/docs/4.3/assets/js/vendor/clipboard.min.js"></script>
+	<script src="/docs/4.3/assets/js/vendor/bs-custom-file-input.min.js"></script>
+	<script src="/docs/4.3/assets/js/src/application.js"></script>
+	<script src="/docs/4.3/assets/js/src/search.js"></script>
+	<script src="/docs/4.3/assets/js/src/ie-emulation-modes-warning.js"></script>
+
+
+	<svg xmlns="http://www.w3.org/2000/svg" width="208" height="225"
+		viewBox="0 0 208 225" preserveAspectRatio="none"
+		style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;">
+		<defs>
+		<style type="text/css"></style></defs>
+		<text x="0" y="11"
+			style="font-weight:bold;font-size:11pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg>
+</body>
+</html>
